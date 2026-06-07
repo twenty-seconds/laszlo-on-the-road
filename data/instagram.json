@@ -1,0 +1,11 @@
+{
+  "handle": "laszlo.healing.oasis",
+  "profile": "https://www.instagram.com/laszlo.healing.oasis/",
+  "_hinweis": "BEISPIELDATEN. Wird beim ersten echten GitHub-Actions-Lauf durch die neuesten Instagram-Posts ersetzt.",
+  "posts": [
+    { "img": "assets/img/hero-wasserfall.jpg", "permalink": "https://www.instagram.com/laszlo.healing.oasis/", "caption": "On the Road.", "timestamp": "" },
+    { "img": "assets/img/ayurveda-portrait.jpg", "permalink": "https://www.instagram.com/laszlo.healing.oasis/", "caption": "Ayurveda.", "timestamp": "" },
+    { "img": "assets/img/meditation.jpg", "permalink": "https://www.instagram.com/laszlo.healing.oasis/", "caption": "Stille.", "timestamp": "" },
+    { "img": "assets/img/portrait.jpg", "permalink": "https://www.instagram.com/laszlo.healing.oasis/", "caption": "Servus.", "timestamp": "" }
+  ]
+}

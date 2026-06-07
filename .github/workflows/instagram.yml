@@ -1,0 +1,43 @@
+name: Instagram-Feed aktualisieren
+
+# Holt 1x taeglich Laszlos neueste Instagram-Posts und committet sie in die Seite.
+# Laeuft serverseitig — die Besucher-Browser sprechen NIE mit Instagram.
+# Benoetigt das Repo-Secret IG_TOKEN (langlebiger Access-Token).
+
+on:
+  schedule:
+    - cron: "0 5 * * *"   # taeglich 05:00 UTC
+  workflow_dispatch:        # zusaetzlich manuell ausloesbar
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instagram-Posts holen
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_LIMIT: "8"
+        run: python3 scripts/fetch_instagram.py
+
+      - name: Aenderungen committen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/instagram data/instagram.json
+          if git diff --cached --quiet; then
+            echo "Keine Aenderungen am Feed."
+          else
+            git commit -m "Instagram-Feed aktualisiert (automatisch)"
+            git push
+          fi
