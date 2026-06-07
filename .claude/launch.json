@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "laszlo",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-c", "import os; os.chdir(os.path.expanduser('~/laszlo-on-the-road')); import http.server, socketserver; socketserver.TCPServer(('', 8788), http.server.SimpleHTTPRequestHandler).serve_forever()"],
+      "port": 8788
+    }
+  ]
+}
